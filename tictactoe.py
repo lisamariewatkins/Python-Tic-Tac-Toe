@@ -1,61 +1,103 @@
-from __future__ import print_function
+#Python tic-tac-toe game, for project 1 of Udemy's complete python bootcamp
+import random
 
+def displayBoard(board):
+    print board[0], ' | ',board[1], ' | ',board[2]
+    print '-------------'
+    print board[3], ' | ',board[4],' | ',board[5]
+    print '-------------'
+    print board[6],' | ',board[7],' | ',board[8]
 
-from IPython.display import clear_output
-def display_board(bprint('   |   |'):
-    clear_output()
-    print('   |   |')
-    print(' ' + board[7] + ' | ' + board[8] + ' | ' + board[9])
-    print('   |   |')
-    print('-----------')
-    print('   |   |')
-    print(' ' + board[4] + ' | ' + board[5] + ' | ' + board[6])
-    print('   |   |')
-    print('-----------')
-    print('   |   |')
-    print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
-    print('   |   |')
-
-print "Player 1, would you like to be X's or O'x?"
-
-def player_input():
-                  
-    marker = ' '
-    while not marker == 'O' or marker == 'X'):
-        raw_input(Player 1: 'Please choose 'X' or 'O'').upper()
-
-    if marker == 'X':
-        return('X', 'O')
-    if marker == 'O':
-        return('O', 'X')
-    
-def place_maker(board, marker, position):
-    board[position] = marker
-        
-def win_check(board, player):
-    if board[7] == board[8] == board [9] == player or \
-       board[4] == board[5] == board [6] == player or \
-       board[1] == board[2] == board [3] == player or \
-       board[7] == board[4] == board [1] == player or \
-       board[8] == board[5] == board [2] == player or \
-       board[9] == board[6] == board [3] == player or \
-       board[7] == board[5] == board [3] == player or \
-       board[9] == board[5] == board [1] == player or \
-       return True
+def inputLetter(): #lets player type in what letter they'd like to be
+    letter = ''
+    while not letter == 'X' or letter == 'O':
+        letter = raw_input("Do you want to be X or O?").upper()
+    if letter == "X":
+        return ("X", "O")
     else:
-        return False
+        return ("O", "X")
 
-def full_board(board):
-    if " " in board[1:]:
-        return False
+def first():
+    if random.randint(0,1) == 0:
+        return "Player 1"
     else:
-        return True
+        return "Player 2"
 
-def ask_player(mark):
-    
+def playAgain():
+    return raw_input("Do you want to play again?").lower().startswith("y")
 
+def move(board, letter, move):
+    board[move] = letter
 
+def whoWon(board, letter):
+    return (board[0] == board[1] == board [2] == letter or 
+       board[3] == board[4] == board [5] == letter or 
+       board[6] == board[7] == board [8] == letter or 
+       board[0] == board[3] == board [6] == letter or 
+       board[1] == board[4] == board [7] == letter or 
+       board[2] == board[5] == board [8] == letter or 
+       board[0] == board[4] == board [8] == letter or 
+       board[2] == board[4] == board [6] == letter) 
 
+def spaceCheck(board, position):
+    return board[position] == ""
 
+def fullBoard(board):
+    for i in range(1,10):
+        if space_check(board,i):
+            return False
+    return True
 
+def chooseSpace(board):
+    position = ''
+
+    while position not in '1 2 3 4 5 6 7 8 9'.split() or not spaceCheck(board,int(position)):
+        position = raw_input("Choose your next position: (1-9)")
+    return int(position)
+
+print("Welcome to Tic-Tac-Toe")
+
+while True:
+    board = [' '] * 9
+    player1Marker, player2Marker = inputLetter()
+    turn = first()
+    print(turn + " goes first")
+
+    gameOn = True
+
+    while gameOn:
+        if turn == "Player 1":
+            displayBoard(board)
+            position = chooseSpace(board)
+            move(board, player1Marker, position)
+
+            if winCheck(board, player1_marker):
+                displayBoard(board)
+                print("Congratulations player 1")
+                gameOn = False
+            else:
+                if full_board_check(theBOard):
+                    displayBoard(board)
+                    print("the game is a draw")
+                    break
+                else:
+                    turn = "Player 2"
+        else:
+            displayBoard(board)
+            position = chooseSpace(board)
+            move(board, player2Marker, position)
+
+            if winCheck(board, player2Marker):
+                displayBoard(board)
+                print("Congratulations player 2")
+                gameOn = False
+            else:
+                if fullboard(board):
+                    displayBoard(board)
+                    print("the game is a draw")
+                    break
+                else:
+                    turn = "Player 1"
+    if not playAgain():
+        break
 
