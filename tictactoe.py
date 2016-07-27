@@ -60,7 +60,7 @@ def replay():
 print("Welcome to Tic-Tac-Toe")
 
 while True:
-    board = [' '] * 9
+    board = [' '] * 10
     player1Marker, player2Marker = inputLetter()
     turn = first()
     print(turn + " goes first")
