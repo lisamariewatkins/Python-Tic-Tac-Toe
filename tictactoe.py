@@ -2,11 +2,11 @@
 import random
 
 def displayBoard(board):
-    print board[0], ' | ',board[1], ' | ',board[2]
+    print board[1], ' | ',board[2], ' | ',board[3]
     print '-------------'
-    print board[3], ' | ',board[4],' | ',board[5]
+    print board[4], ' | ',board[5],' | ',board[6]
     print '-------------'
-    print board[6],' | ',board[7],' | ',board[8]
+    print board[7],' | ',board[8],' | ',board[9]
 
 def inputLetter(): #lets player type in what letter they'd like to be
     letter = ''
