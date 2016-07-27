@@ -30,14 +30,14 @@ def move(board, letter, position):
     board[position] = letter
 
 def whoWon(board, letter):
-    return (board[0] == board[1] == board [2] == letter or 
-       board[3] == board[4] == board [5] == letter or 
-       board[6] == board[7] == board [8] == letter or 
-       board[0] == board[3] == board [6] == letter or 
+    return (board[1] == board[2] == board [3] == letter or 
+       board[4] == board[5] == board [6] == letter or 
+       board[7] == board[8] == board [9] == letter or 
        board[1] == board[4] == board [7] == letter or 
        board[2] == board[5] == board [8] == letter or 
-       board[0] == board[4] == board [8] == letter or 
-       board[2] == board[4] == board [6] == letter) 
+       board[3] == board[6] == board [9] == letter or 
+       board[1] == board[5] == board [9] == letter or 
+       board[3] == board[5] == board [7] == letter) 
 
 def spaceCheck(board, position):
     return board[position] == " "
